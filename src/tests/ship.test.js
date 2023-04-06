@@ -17,7 +17,7 @@ describe("ships", () => {
         const battleship = new Ship(4);
         battleship.hit(2);
 
-        expect(battleship[2]).toEqual({ hit: true} );
+        expect(battleship.ship[2]).toEqual({ hit: true} );
     })
 
     test("created ship should not be sunk", () => {

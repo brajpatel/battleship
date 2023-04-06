@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=new class{constructor(t){this.length=t,this.ship=this.createShip()}createShip(){let t=[];for(let h=0;h<this.length;h++)t.push({hit:!1});return t}getShipLength(){return this.ship.length}hit(t){this.ship[t].hit=!0}checkHit(t){return!!t.hit}isSunk(){return!!this.ship.every(this.checkHit)}}(4);t.hit(1),console.log(t.ship[1])})();
