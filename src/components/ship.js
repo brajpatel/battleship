@@ -27,12 +27,7 @@ export class Ship {
     }
 
     isSunk() {
-        if(this.ship.every(this.checkHit)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.ship.every(this.checkHit)
     }
 }
 
