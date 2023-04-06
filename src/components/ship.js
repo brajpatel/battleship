@@ -1,17 +1,33 @@
 export class Ship {
     constructor(length) {
         this.length = length;
-        this.hits = 0;
-        this.sunk = false;
+        this.ship = this.createShip();
     }
 
-    hit() {
-        this.hits = this.hits + 1;
+    createShip() {
+        let shipArr = [];
+
+        for(let i = 0; i < this.length; i++) {
+            ship.push({ hit: false });
+        }
+
+        return shipArr;
+    }
+
+    getShipLength() {
+        return this.ship.length;
+    }
+
+    checkHit(item) {
+        return item.hit ? true : false;
     }
 
     isSunk() {
-        if(this.hits === this.length) {
-            this.sunk = true;
+        if(this.ship.every(this.checkHit)) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }
