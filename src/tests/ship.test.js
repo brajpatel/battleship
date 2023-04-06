@@ -25,4 +25,15 @@ describe("ships", () => {
 
         expect(submarine.isSunk()).toBe(false);
     })
+
+    test("a ship hit in all places is sunk", () => {
+        const carrier = new Ship(5);
+        carrier.hit(0)
+        carrier.hit(1)
+        carrier.hit(2)
+        carrier.hit(3)
+        carrier.hit(4)
+
+        expect(carrier.isSunk()).toBe(true);
+    })
 })
