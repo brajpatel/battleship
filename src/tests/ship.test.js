@@ -1,4 +1,4 @@
-import { Ship } from './ship';
+import { Ship } from '../components/ship';
 
 // carrier(5)
 // battleship(4)
@@ -7,9 +7,22 @@ import { Ship } from './ship';
 // destroyer(2)
 
 describe("ships", () => {
-    test("return ship length", () => {
+    test("return ship array as long as length", () => {
         const cruiser = new Ship(3);
 
         expect(cruiser.getShipLength()).toBe(3);
+    })
+
+    test("ship is hittable", () => {
+        const battleship = new Ship(4);
+        battleship.hit(2);
+
+        expect(battleship[2]).toEqual({ hit: true} );
+    })
+
+    test("created ship should not be sunk", () => {
+        const submarine = new Ship(3);
+
+        expect(submarine.isSunk()).toBe(false);
     })
 })

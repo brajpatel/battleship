@@ -8,7 +8,7 @@ export class Ship {
         let shipArr = [];
 
         for(let i = 0; i < this.length; i++) {
-            ship.push({ hit: false });
+            shipArr.push({ hit: false });
         }
 
         return shipArr;
@@ -16,6 +16,10 @@ export class Ship {
 
     getShipLength() {
         return this.ship.length;
+    }
+
+    hit(index) {
+        this.ship[index].hit = true;
     }
 
     checkHit(item) {
