@@ -7,6 +7,13 @@ import { Ship } from '../components/ship';
 // destroyer(2)
 
 describe("ships", () => {
+    test("ship should be an array of objects with hit property", () => {
+        const destroyer = new Ship(2);
+        const obj = [{ hit: false }, { hit: false }];
+
+        expect(destroyer.ship).toEqual(obj);
+    })
+
     test("return ship array as long as length", () => {
         const cruiser = new Ship(3);
 
