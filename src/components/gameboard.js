@@ -17,4 +17,8 @@ export class Gameboard {
 
         return arr;
     }
+
+    getGameBoard() {
+        return this.board;
+    }
 }
