@@ -12,26 +12,26 @@ describe("ships", () => {
         const obj = [{ hit: false }, { hit: false }];
 
         expect(destroyer.ship).toEqual(obj);
-    })
+    });
 
     test("return ship array as long as length", () => {
         const cruiser = new Ship(3);
 
         expect(cruiser.getShipLength()).toBe(3);
-    })
+    });
 
     test("ship is hittable", () => {
         const battleship = new Ship(4);
         battleship.hit(2);
 
         expect(battleship.ship[2]).toEqual({ hit: true} );
-    })
+    });
 
     test("created ship should not be sunk", () => {
         const submarine = new Ship(3);
 
         expect(submarine.isSunk()).toBe(false);
-    })
+    });
 
     test("a ship not hit in all places is not sunk", () => {
         const cruiser = new Ship(3);
@@ -39,7 +39,7 @@ describe("ships", () => {
         cruiser.hit(2);
 
         expect(cruiser.isSunk()).toBe(false);
-    })
+    });
 
     test("a ship hit in all places is sunk", () => {
         const carrier = new Ship(5);
@@ -50,5 +50,5 @@ describe("ships", () => {
         carrier.hit(4)
 
         expect(carrier.isSunk()).toBe(true);
-    })
+    });
 });
