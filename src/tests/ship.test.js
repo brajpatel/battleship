@@ -7,7 +7,7 @@ import { Ship } from '../components/ship';
 // destroyer(2)
 
 describe("ships", () => {
-    test("ship should be an array of objects with hit property", () => {
+    test("ship should be an array of objects, each with a hit property", () => {
         const destroyer = new Ship(2);
         const obj = [{ hit: false }, { hit: false }];
 
@@ -31,6 +31,14 @@ describe("ships", () => {
         const submarine = new Ship(3);
 
         expect(submarine.isSunk()).toBe(false);
+    })
+
+    test("a ship not hit in all places is not sunk", () => {
+        const cruiser = new Ship(3);
+        cruiser.hit(0);
+        cruiser.hit(2);
+
+        expect(cruiser.isSunk()).toBe(false);
     })
 
     test("a ship hit in all places is sunk", () => {
