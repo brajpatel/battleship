@@ -51,4 +51,4 @@ describe("ships", () => {
 
         expect(carrier.isSunk()).toBe(true);
     })
-})
+});
