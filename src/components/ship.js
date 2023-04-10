@@ -4,6 +4,10 @@ export class Ship {
         this.ship = this.createShip();
     }
 
+    getShipLength() {
+        return this.ship.length;
+    }
+
     createShip() {
         let shipArr = [];
 
@@ -12,10 +16,6 @@ export class Ship {
         }
 
         return shipArr;
-    }
-
-    getShipLength() {
-        return this.ship.length;
     }
 
     hit(index) {
