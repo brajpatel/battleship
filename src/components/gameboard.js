@@ -28,7 +28,7 @@ export class Gameboard {
     }
 
     checkValidShipPlacement(length, x, y) {
-        if(y + length > 10) {
+        if(x > 10 || x < 0 || y > 10 || y < 0 || y + length > 10) {
             return false;
         }
         else {
@@ -47,6 +47,8 @@ export class Gameboard {
                 this.board[y + i][x].shipName = ship;
                 this.board[y + i][x].shipIndex = i;
             }
+            return true;
         }
+        return false;
     }
 }
