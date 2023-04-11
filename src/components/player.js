@@ -19,7 +19,10 @@ export class Player {
         }
     }
 
-    checkTurn() {
-        return this.turn;
+    attack(enemyPlayer, enemyBoard, x, y) {
+        if(this.turn) {
+            enemyBoard.receiveAttack(x, y);
+            this.endTurn(enemyPlayer);
+        }
     }
 }
