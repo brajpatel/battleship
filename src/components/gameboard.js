@@ -60,4 +60,20 @@ export class Gameboard {
             this.board[y][x].shipName.hit(this.board[y][x].shipIndex);
         }
     }
+
+    checkAllShipSunk() {
+        let indicator = true;
+
+        this.board.forEach((row) => {
+            row.forEach((item) => {
+                if(item.shipName) {
+                    if(!item.shipName.isSunk()) {
+                        indicator = false;
+                    }
+                }
+            })
+        });
+
+        return indicator;
+    }
 }
