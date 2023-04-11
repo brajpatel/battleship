@@ -92,7 +92,7 @@ describe("gameboard", () => {
         expect(gameboard.board[2][2].shipName.ship).toEqual([{ hit: true }, { hit: false }, { hit: false }]);
     });
 
-    test("indicate if all ships on a board are sunk or not", () => {
+    test("all ships are sunk if all ship squares have been hit", () => {
         const gameboard = new Gameboard();
         const cruiser = new Ship(3);
         const destroyer = new Ship(2);
@@ -107,5 +107,21 @@ describe("gameboard", () => {
         gameboard.receiveAttack(7, 7);
 
         expect(gameboard.checkAllShipSunk()).toBe(true);
-    })
+    });
+
+    test("not all ships are sunk if unhit squares remain on the board", () => {
+        const gameboard = new Gameboard();
+        const cruiser = new Ship(3);
+        const destroyer = new Ship(2);
+
+        gameboard.placeShip(cruiser, 2, 3);
+        gameboard.placeShip(destroyer, 7, 6);
+
+        gameboard.receiveAttack(2, 3);
+        gameboard.receiveAttack(2, 4);
+        gameboard.receiveAttack(7, 6);
+        gameboard.receiveAttack(7, 7);
+
+        expect(gameboard.checkAllShipSunk()).toBe(false);
+    });
 });
