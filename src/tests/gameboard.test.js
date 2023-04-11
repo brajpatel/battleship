@@ -7,7 +7,11 @@ describe("gameboard", () => {
         expect(gameboard.board.length).toBe(10);
     });
 
-    test("elements in the gameboard array are objects", () => {
+    test("the board array contains subarrays of length 10", () => {
+        expect(gameboard.board[8].length).toBe(10);
+    })
+
+    test("elements in the gameboard subarrays are objects", () => {
         expect(gameboard.board[0][3] instanceof Object).toBe(true);
     })
 
