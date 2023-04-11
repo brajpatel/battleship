@@ -20,11 +20,29 @@ describe("player", () => {
         player.setName('Sakura');
 
         expect(player.name).toMatch(/sakura/i);
-    })
+    });
 
     test("the created player takes the first turn in the game", () => {
         const newPlayer = new Player();
 
         expect(newPlayer.turn).toBe(true);
-    })
+    });
+
+    test("the player's turn ends after calling the endTurn method", () => {
+        const player = new Player();
+        const enemyPlayer = new Player();
+
+        player.endTurn(enemyPlayer);
+
+        expect(player.turn).toBe(false);
+    });
+
+    test("ending the player's turn starts the enemy player's turn", () => {
+        const player = new Player();
+        const enemyPlayer = new Player();
+
+        player.endTurn(enemyPlayer);
+
+        expect(enemyPlayer.turn).toBe(true);
+    });
 });
