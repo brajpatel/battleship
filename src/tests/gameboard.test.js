@@ -79,7 +79,7 @@ describe("gameboard", () => {
         gameboard.receiveAttack(6, 8);
 
         expect(missedAttacks.length).toBe(1);
-    })
+    });
 
     test("a ship placed on the board can receive an attack", () => {
         const gameboard = new Gameboard();
@@ -90,5 +90,22 @@ describe("gameboard", () => {
         console.log(gameboard.board[2][2])
 
         expect(gameboard.board[2][2].shipName.ship).toEqual([{ hit: true }, { hit: false }, { hit: false }]);
+    });
+
+    test("indicate if all ships on a board are sunk or not", () => {
+        const gameboard = new Gameboard();
+        const cruiser = new Ship(3);
+        const destroyer = new Ship(2);
+
+        gameboard.placeShip(cruiser, 2, 3);
+        gameboard.placeShip(destroyer, 7, 6);
+
+        gameboard.receiveAttack(2, 3);
+        gameboard.receiveAttack(2, 4);
+        gameboard.receiveAttack(2, 5);
+        gameboard.receiveAttack(7, 6);
+        gameboard.receiveAttack(7, 7);
+
+        expect(gameboard.checkAllShipSunk()).toBe(true);
     })
 });
