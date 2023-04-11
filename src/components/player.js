@@ -18,4 +18,8 @@ export class Player {
             enemyPlayer.startTurn();
         }
     }
+
+    checkTurn() {
+        return this.turn;
+    }
 }
