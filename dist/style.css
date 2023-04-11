@@ -1,8 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    height: 95vh;
+    width: 97vw;
+    background: white;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.initial-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+}
+
+.ships {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.ship {
+    position: relative;
+}
+
+.ship::after {
+    content: var(--name);
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+}
+
+.block {
+    height: 40px;
+    width: 40px;
+    background: crimson;
+    border: 2px solid rgb(148, 18, 44);
+}
+
+.player-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
