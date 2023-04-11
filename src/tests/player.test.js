@@ -21,4 +21,10 @@ describe("player", () => {
 
         expect(player.name).toMatch(/sakura/i);
     })
+
+    test("the created player takes the first turn in the game", () => {
+        const newPlayer = new Player();
+
+        expect(newPlayer.turn).toBe(true);
+    })
 });
