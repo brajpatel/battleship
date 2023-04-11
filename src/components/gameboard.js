@@ -51,4 +51,13 @@ export class Gameboard {
         }
         return false;
     }
+
+    receiveAttack(x, y) {
+        if(!this.board[x][y].shipName) {
+            this.missedAttacks.push({ x: x, y: y });
+        }
+        else {
+            this.board[x][y].shipName.hit(this.board[x][y].shipIndex);
+        }
+    }
 }
