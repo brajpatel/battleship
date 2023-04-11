@@ -36,9 +36,15 @@ describe("gameboard", () => {
         expect(gameboard.checkValidShipPlacement(carrier.getShipLength(), 9, 0)).toBe(true);
     })
 
-    test("a ship cannot be placed outside the board's parameters and returns false", () => {
+    test("a ship cannot be placed outside the board's parameters and returns false 1", () => {
         const battleship = new Ship(4);
 
         expect(gameboard.checkValidShipPlacement(battleship.getShipLength(), 1, 8)).toBe(false);
+    })
+
+    test("a ship cannot be placed outside the board's parameters and returns false 1", () => {
+        const destroyer = new Ship(2);
+
+        expect(gameboard.checkValidShipPlacement(destroyer.getShipLength(), 7, 9)).toBe(false);
     })
 })
