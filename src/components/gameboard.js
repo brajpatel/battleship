@@ -28,7 +28,7 @@ export class Gameboard {
     }
 
     checkValidShipPlacement(length, x, y) {
-        if(x > 10 || x < 0 || y > 10 || y < 0 || y + length > 10) {
+        if(y + length > 10) {
             return false;
         }
         else {
