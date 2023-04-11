@@ -53,11 +53,11 @@ export class Gameboard {
     }
 
     receiveAttack(x, y) {
-        if(!this.board[x][y].shipName) {
+        if(!this.board[y][x].shipName) {
             this.missedAttacks.push({ x: x, y: y });
         }
         else {
-            this.board[x][y].shipName.hit(this.board[x][y].shipIndex);
+            this.board[y][x].shipName.hit(this.board[y][x].shipIndex);
         }
     }
 }

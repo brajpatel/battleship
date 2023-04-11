@@ -53,16 +53,16 @@ describe("gameboard", () => {
         const gameboard = new Gameboard();
         gameboard.placeShip(submarine, 5, 5);
 
-        expect(gameboard.board[5][5].shipName).toBe(submarine);
-    })
+        expect(gameboard.board[5][5].shipName.ship).toEqual([{ hit: false }, { hit: false }, { hit: false }]);
+    });
 
-    test("a ship with invalid placement will leave those squares unoccupiedundefined", () => {
+    test("a ship with invalid placement will leave those squares unoccupied", () => {
         const cruiser = new Ship(3);
         const gameboard = new Gameboard();
         gameboard.placeShip(cruiser, 1, 8);
 
         expect(gameboard.board[1][8]).toEqual({ shipName: undefined, shipIndex: undefined });
-    })
+    });
 
     test("a ship cannot be placed on board squares occupied by other ships", () => {
         const carrier = new Ship(5);
@@ -71,5 +71,24 @@ describe("gameboard", () => {
         gameboard.placeShip(carrier, 7, 4);
 
         expect(gameboard.placeShip(battleship, 7, 1)).toBe(false);
+    });
+
+    test("boards can receive an attack", () => {
+        const gameboard = new Gameboard();
+        const missedAttacks = gameboard.getMissedAttacks();
+        gameboard.receiveAttack(6, 8);
+
+        expect(missedAttacks.length).toBe(1);
+    })
+
+    test("a ship placed on the board can receive an attack", () => {
+        const gameboard = new Gameboard();
+        const submarine = new Ship(3);
+        gameboard.placeShip(submarine, 2, 2);
+        gameboard.receiveAttack(2, 2);
+
+        console.log(gameboard.board[2][2])
+
+        expect(gameboard.board[2][2].shipName.ship).toEqual([{ hit: true }, { hit: false }, { hit: false }]);
     })
 });
