@@ -56,7 +56,7 @@ describe("gameboard", () => {
         expect(gameboard.board[5][5].shipName).toBe(submarine);
     })
 
-    test("a ship with invalid placement will leave those squares unoccupied", () => {
+    test("a ship with invalid placement will leave those squares unoccupiedundefined", () => {
         const cruiser = new Ship(3);
         const gameboard = new Gameboard();
         gameboard.placeShip(cruiser, 1, 8);
