@@ -1,11 +1,5 @@
 import { Ship } from '../components/ship';
 
-// carrier(5)
-// battleship(4)
-// cruiser(3)
-// submarine(3)
-// destroyer(2)
-
 describe("ships", () => {
     test("ship should be an array of objects, each with a hit property", () => {
         const destroyer = new Ship(2);
