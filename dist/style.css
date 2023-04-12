@@ -8,7 +8,7 @@
 
 body {
     height: 100vh;
-    background: lightblue;
+    background: #eaebea;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ body {
     height: 95vh;
     width: 97vw;
     background: white;
-    box-shadow: 0 0 20px rgb(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
@@ -58,4 +58,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+}
+
+.board-name {
+    font-size: 2rem;
+}
+
+.player-board {
+    height: 415px;
+    width: 415px;
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.cell {
+    background: white;
+    border: 1px solid rgb(100, 100, 100);
 }
