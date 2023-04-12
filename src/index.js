@@ -114,6 +114,12 @@ function updateBoard(board, boardName) {
                     selectedCell.classList.add('occupied');
                 }
             }
-        })
-    })
+        });
+    });
+
+    missedAttacksArr.forEach((attack) => {
+        let selectedCell = document.querySelector(`.${boardName} [data-x="${attack.x}"][data-y="${attack.y}"]`);
+        selectedCell.classList.add('missed');
+        selectedCell.textContent = '-';
+    });
 }
