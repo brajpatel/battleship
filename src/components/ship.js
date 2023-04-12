@@ -4,6 +4,10 @@ export class Ship {
         this.ship = this.createShip();
     }
 
+    getShip() {
+        return this.ship;
+    }
+
     getShipLength() {
         return this.ship.length;
     }

@@ -4,7 +4,7 @@ export class Gameboard {
         this.missedAttacks = [];
     }
 
-    getGameBoard() {
+    getGameboard() {
         return this.board;
     }
 

@@ -18,7 +18,7 @@ dragStarter(htmlDestroyer);
 // add drag and drop functionality to the player's ships
 function dragStarter(ship) {
     ship.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setDate('text/plain', e.target.id);
+        e.dataTransfer.setData('text/plain', e.target.id);
     });
 }
 
@@ -81,13 +81,16 @@ function dropShip(e) {
     let y = parseInt(e.target.getAttribute('data-y'));
 
     switch(shipData) {
-        case 'Carrier':
+        case 'carrier':
             if(playerBoard.checkValidShipPlacement(carrier.getShipLength(), x, y)) {
                 playerBoard.placeShip(carrier, x, y);
                 let ship = document.querySelector(`#${shipData}`);
                 playerShips.removeChild(ship);
-                updateBoard('player-board', playerBoard);
+                updateBoard(playerBoard, 'player-board');
 
+                if(playerShips.childNodes.length <= 6) {
+                    playerShips.style.display = 'none';
+                }
             }
     }
 }
