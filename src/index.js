@@ -84,7 +84,7 @@ function dropShip(e) {
         case 'Carrier':
             if(playerBoard.checkValidShipPlacement(carrier.getShipLength(), x, y)) {
                 playerBoard.placeShip(carrier, x, y);
-                let ship = document.querySelector(`${shipData}`);
+                let ship = document.querySelector(`#${shipData}`);
                 playerShips.removeChild(ship);
                 updateBoard('player-board', playerBoard);
 
@@ -99,4 +99,21 @@ function attackEnemy(target) {
 function updateBoard(board, boardName) {
     let boardArr = board.getGameboard();
     let missedAttacksArr = board.getMissedAttacks();
+
+    boardArr.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            if(cell.shipName) {
+                if(cell.shipName.checkHit(cell.shipName.getShip()[cell.shipIndex])) {
+                    let selectedCell = document.querySelector(`.${boardName} [data-x="${x}"][data-y="${y}"]`);
+                    selectedCell.classList.add('hit');
+                    selectedCell.classList.remove('occupied');
+                    selectedCell.textContent = 'X';
+                }
+                else if(boardName === 'player-board') {
+                    let selectedCell = document.querySelector(`.${boardName} [data-x="${x}"][data-y="${y}"]`);
+                    selectedCell.classList.add('occupied');
+                }
+            }
+        })
+    })
 }

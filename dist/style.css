@@ -50,8 +50,8 @@ body {
 .block {
     height: 40px;
     width: 40px;
-    background: crimson;
-    border: 2px solid rgb(148, 18, 44);
+    background: rgb(46, 46, 187);
+    border: 2px solid rgb(30, 30, 138);
 }
 
 .player-side {
@@ -76,4 +76,9 @@ body {
 .cell {
     background: white;
     border: 1px solid rgb(100, 100, 100);
+}
+
+.cell.occupied {
+    background: rgb(46, 46, 187);
+    border: 2px solid rgb(30, 30, 138);
 }
