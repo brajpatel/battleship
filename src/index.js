@@ -9,6 +9,19 @@ const htmlCruiser = document.getElementById('cruiser');
 const htmlSubmarine = document.getElementById('submarine');
 const htmlDestroyer = document.getElementById('destroyer');
 
+dragStarter(htmlCarrier);
+dragStarter(htmlBattleship);
+dragStarter(htmlCruiser);
+dragStarter(htmlSubmarine);
+dragStarter(htmlDestroyer);
+
+// add drag and drop functionality to the player's ships
+function dragStarter(ship) {
+    ship.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setDate('text/plain', e.target.id);
+    });
+}
+
 // create player boards
 const playerBoard = new Gameboard();
 
@@ -31,6 +44,8 @@ const aiDestroyer = new Ship(2);
 
 // create boards
 createBoard('player-board');
+
+updateBoard(playerBoard, 'player-board');
 
 function createBoard(boardName) {
     const board = document.getElementById(`${boardName}`);
@@ -61,9 +76,27 @@ function createBoard(boardName) {
 }
 
 function dropShip(e) {
+    let shipData = e.dataTransfer.getData('text');
+    let x = parseInt(e.target.getAttribute('data-x'));
+    let y = parseInt(e.target.getAttribute('data-y'));
 
+    switch(shipData) {
+        case 'Carrier':
+            if(playerBoard.checkValidShipPlacement(carrier.getShipLength(), x, y)) {
+                playerBoard.placeShip(carrier, x, y);
+                let ship = document.querySelector(`${shipData}`);
+                playerShips.removeChild(ship);
+                updateBoard('player-board', playerBoard);
+
+            }
+    }
 }
 
 function attackEnemy(target) {
 
+}
+
+function updateBoard(board, boardName) {
+    let boardArr = board.getGameboard();
+    let missedAttacksArr = board.getMissedAttacks();
 }
