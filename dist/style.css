@@ -17,8 +17,8 @@ body {
 button {
     cursor: pointer;
     outline: none;
-    padding: 0.6rem 1rem;
-    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
 }
 
 .game-container {
@@ -146,10 +146,7 @@ button {
     align-items: center;
 }
 
-.hide-winner {
-    display: none;
-}
-
+.modal,
 .winner-container {
     background: white;
     padding: 1.5rem 2rem;
@@ -161,3 +158,20 @@ button {
     gap: 1rem;
 }
 
+.modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+form input {
+    outline: none;
+    padding: 4px 10px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.hide-winner {
+    display: none;
+}

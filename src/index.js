@@ -3,6 +3,8 @@ import { Ai } from "./components/ai";
 import { Ship } from "./components/ship";
 import { Gameboard } from "./components/gameboard";
 
+const playerNameInput = document.getElementById('player-name-input');
+
 const playerShips = document.getElementById('player-ships');
 const htmlCarrier = document.getElementById('carrier');
 const htmlBattleship = document.getElementById('battleship');
@@ -234,6 +236,5 @@ function updateBoard(board, boardName) {
 
 function endGame(winner) {
     const winnerMessage = document.getElementById('winner-message');
-
     winnerMessage.textContent = `${winner.name} Wins!`;
 }
