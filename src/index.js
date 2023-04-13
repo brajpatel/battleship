@@ -1,4 +1,5 @@
 import { Player } from "./components/player";
+import { Ai } from "./components/ai";
 import { Ship } from "./components/ship";
 import { Gameboard } from "./components/gameboard";
 
@@ -29,7 +30,7 @@ const aiBoard = new Gameboard();
 
 // create players
 const player = new Player('');
-
+const aiPlayer = new Ai('AI-Chan', player, playerBoard);
 
 // player ships
 const carrier = new Ship(5);
@@ -44,6 +45,12 @@ const aiBattleship = new Ship(4);
 const aiCruiser = new Ship(3);
 const aiSubmarine = new Ship(3);
 const aiDestroyer = new Ship(2);
+
+placeAiShip(aiCarrier);
+placeAiShip(aiBattleship);
+placeAiShip(aiCruiser);
+placeAiShip(aiSubmarine);
+placeAiShip(aiDestroyer);
 
 // create boards
 createBoard('player-board');
@@ -75,6 +82,20 @@ function createBoard(boardName) {
             }
 
             board.appendChild(cell);
+        }
+    }
+}
+
+function placeAiShip(ship) {
+    let indicator = true;
+
+    while(indicator) {
+        let x = Math.floor(Math.random() * 10);
+        let y = Math.floor(Math.random() * 10);
+
+        if(aiBoard.checkValidShipPlacement(ship.getShipLength(), x, y)) {
+            aiBoard.placeShip(ship, x, y);
+            indicator = false;
         }
     }
 }
@@ -168,7 +189,19 @@ function attackEnemy(target) {
     let x = target.getAttribute('data-x');
     let y = target.getAttribute('data-y');
 
-    player.attack()
+    player.attack(aiPlayer, aiBoard, x, y);
+    updateBoard(aiBoard, 'ai-board');
+
+    if(aiBoard.checkAllShipSunk()) {
+        endGame(player);
+    }
+
+    aiPlayer.generateAttack();
+    updateBoard(playerBoard, 'player-board');
+
+    if(playerBoard.checkAllShipSunk()) {
+        endGame(aiPlayer);
+    }
 }
 
 function updateBoard(board, boardName) {
@@ -197,4 +230,8 @@ function updateBoard(board, boardName) {
         selectedCell.classList.add('missed');
         selectedCell.textContent = '-';
     });
+}
+
+function endGame(winner) {
+    alert(`${winner.name} Wins!`);
 }
