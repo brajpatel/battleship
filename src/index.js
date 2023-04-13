@@ -41,7 +41,7 @@ const playerBoard = new Gameboard();
 const aiBoard = new Gameboard();
 
 // create players
-const player = new Player('Player');
+const player = new Player('');
 const aiPlayer = new Ai('AI-Chan', player, playerBoard);
 
 // player ships
@@ -71,8 +71,10 @@ updateBoard(playerBoard, 'player-board');
 updateBoard(aiBoard, 'ai-board');
 
 function setPlayerName() {
-    const playerBoardName = document.getElementById('player-board-name');
     const name = playerNameInput.value.slice(0, 1).toUpperCase() + playerNameInput.value.slice(1);
+    player.setName(name);
+
+    const playerBoardName = document.getElementById('player-board-name');
     playerBoardName.textContent = `${name}'s Board`;
 
     const modalContainer = document.getElementById('modal-container');
@@ -134,7 +136,7 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 9) {
+                if(playerShips.childNodes.length <= 6) {
                     updateGameLayout();
                 }
             }
@@ -147,7 +149,7 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 9) {
+                if(playerShips.childNodes.length <= 6) {
                     updateGameLayout();
                 }
             }
@@ -160,7 +162,7 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 9) {
+                if(playerShips.childNodes.length <= 6) {
                     updateGameLayout();
                 }
             }
@@ -173,7 +175,7 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 9) {
+                if(playerShips.childNodes.length <= 6) {
                     updateGameLayout();
                 }
             }
@@ -186,7 +188,7 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 9) {
+                if(playerShips.childNodes.length <= 6) {
                     updateGameLayout();
                 }
             }
@@ -257,17 +259,13 @@ function endGame(winner) {
     const gameEndContainer = document.getElementById('game-end-container');
     gameEndContainer.classList.remove('hide-winner');
 
-    const winnerMessage = document.getElementById('winner-message');
-    winnerMessage.textContent = `${winner.name} Wins!`;
-
-    winner.name === player.name ? playerWin() : aiWin();
+    winner.name === player.name ? playerWin(winner) : aiWin(winner);
 }
 
-endGame(player);
-
-async function playerWin() {
+async function playerWin(winner) {
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.classList.add('player-win');
+    winnerMessage.textContent = `${winner.name} Wins!`;
 
     const response = await fetch('https://nekos.best/api/v2/thumbsup', { mode: 'cors' });
     const data = await response.json();
@@ -279,9 +277,10 @@ async function playerWin() {
     playAgainBtn.parentNode.insertBefore(winnerImg, playAgainBtn);
 }
 
-async function aiWin() {
+async function aiWin(winner) {
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.classList.add('ai-win');
+    winnerMessage.textContent = `${winner.name} Wins!`;
     
     const response = await fetch('https://nekos.best/api/v2/cry', { mode: 'cors' });
     const data = await response.json();
@@ -293,3 +292,5 @@ async function aiWin() {
     playAgainBtn.classList.add('ai-win-restart');
     playAgainBtn.textContent = 'Try Again?';
 }
+
+endGame(player);
