@@ -266,22 +266,30 @@ function endGame(winner) {
 endGame(player);
 
 async function playerWin() {
+    const winnerMessage = document.getElementById('winner-message');
+    winnerMessage.classList.add('player-win');
+
     const response = await fetch('https://nekos.best/api/v2/thumbsup', { mode: 'cors' });
     const data = await response.json();
 
     const winnerImg = document.createElement('img');
     winnerImg.src = data.results[0].url;
 
+    playAgainBtn.classList.add('player-win-restart');
     playAgainBtn.parentNode.insertBefore(winnerImg, playAgainBtn);
 }
 
 async function aiWin() {
+    const winnerMessage = document.getElementById('winner-message');
+    winnerMessage.classList.add('ai-win');
+    
     const response = await fetch('https://nekos.best/api/v2/cry', { mode: 'cors' });
     const data = await response.json();
 
     const winnerImg = document.createElement('img');
     winnerImg.src = data.results[0].url;
 
-    playAgainBtn.textContent = 'Try Again?';
     playAgainBtn.parentNode.insertBefore(winnerImg, playAgainBtn);
+    playAgainBtn.classList.add('ai-win-restart');
+    playAgainBtn.textContent = 'Try Again?';
 }
