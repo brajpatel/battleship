@@ -14,6 +14,13 @@ body {
     align-items: center;
 }
 
+button {
+    cursor: pointer;
+    outline: none;
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+}
+
 .game-container {
     height: 95vh;
     width: 97vw;
@@ -126,3 +133,27 @@ body {
     cursor: default;
     pointer-events: none;
 }
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winner-container {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
