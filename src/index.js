@@ -25,6 +25,7 @@ function dragStarter(ship) {
 
 // create player boards
 const playerBoard = new Gameboard();
+const aiBoard = new Gameboard();
 
 // create players
 const player = new Player('');
@@ -45,8 +46,9 @@ const aiDestroyer = new Ship(2);
 
 // create boards
 createBoard('player-board');
-
+createBoard('ai-board');
 updateBoard(playerBoard, 'player-board');
+updateBoard(aiBoard, 'ai-board');
 
 function createBoard(boardName) {
     const board = document.getElementById(`${boardName}`);
