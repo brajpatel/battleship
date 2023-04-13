@@ -14,13 +14,7 @@ body {
     align-items: center;
 }
 
-button {
-    cursor: pointer;
-    outline: none;
-    padding: 0.4rem 1rem;
-    font-size: 1.2rem;
-}
-
+/* game area */
 .game-container {
     height: 95vh;
     width: 97vw;
@@ -41,6 +35,7 @@ button {
     align-items: center;
 }
 
+/* player ships */
 .ships {
     display: flex;
     align-items: center;
@@ -67,6 +62,7 @@ button {
     border: 2px solid rgb(30, 30, 138);
 }
 
+/* player and ai sides of the game */
 .player-side,
 .ai-side {
     display: flex;
@@ -79,6 +75,7 @@ button {
     display: none;
 }
 
+/* player and ai boards */
 .board-name {
     font-size: 2rem;
 }
@@ -134,6 +131,14 @@ button {
     pointer-events: none;
 }
 
+/* start and end game containers */
+button {
+    cursor: pointer;
+    outline: none;
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+}
+
 .overlay {
     height: 100%;
     width: 100%;
@@ -183,4 +188,17 @@ form input {
 
 .hide-winner {
     display: none;
+}
+
+.winner-container h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    border-bottom: 3px solid black;
+    padding-bottom: 1rem;
+}
+
+.winner-container img {
+    height: 35vh;
+    border-radius: 5px;
 }
