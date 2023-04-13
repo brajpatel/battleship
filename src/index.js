@@ -4,9 +4,10 @@ import { Ship } from "./components/ship";
 import { Gameboard } from "./components/gameboard";
 
 const playerNameInput = document.getElementById('player-name-input');
-const playerReadyBtn = document.getElementById('player-ready-btn');
 
 playerNameInput.addEventListener('keyup', () => {
+    const playerReadyBtn = document.getElementById('player-ready-btn');
+
     playerNameInput.value === '' ? playerReadyBtn.disabled = true : playerReadyBtn.disabled = false;
 })
 
@@ -261,4 +262,4 @@ function endGame(winner) {
     winnerMessage.textContent = `${winner.name} Wins!`;
 }
 
-endGame(player)
+// endGame(player)
