@@ -28,6 +28,12 @@ body {
     align-items: center;
 }
 
+.game-layout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .ships {
     display: flex;
     align-items: center;
