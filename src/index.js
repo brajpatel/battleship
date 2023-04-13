@@ -4,10 +4,9 @@ import { Ship } from "./components/ship";
 import { Gameboard } from "./components/gameboard";
 
 const playerNameInput = document.getElementById('player-name-input');
+const playerReadyBtn = document.getElementById('player-ready-btn');
 
 playerNameInput.addEventListener('keyup', () => {
-    const playerReadyBtn = document.getElementById('player-ready-btn');
-
     playerNameInput.value === '' ? playerReadyBtn.disabled = true : playerReadyBtn.disabled = false;
 })
 
@@ -260,6 +259,29 @@ function endGame(winner) {
 
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.textContent = `${winner.name} Wins!`;
+
+    winner.name === player.name ? playerWin() : aiWin();
 }
 
-// endGame(player)
+endGame(player);
+
+async function playerWin() {
+    const response = await fetch('https://nekos.best/api/v2/thumbsup', { mode: 'cors' });
+    const data = await response.json();
+
+    const winnerImg = document.createElement('img');
+    winnerImg.src = data.results[0].url;
+
+    playAgainBtn.parentNode.insertBefore(winnerImg, playAgainBtn);
+}
+
+async function aiWin() {
+    const response = await fetch('https://nekos.best/api/v2/cry', { mode: 'cors' });
+    const data = await response.json();
+
+    const winnerImg = document.createElement('img');
+    winnerImg.src = data.results[0].url;
+
+    playAgainBtn.textContent = 'Try Again?';
+    playAgainBtn.parentNode.insertBefore(winnerImg, playAgainBtn);
+}
