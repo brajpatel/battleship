@@ -99,5 +99,29 @@ body {
 }
 
 .cell.missed {
-    background: rgb(100, 100, 100);
+    background: rgb(120, 120, 120);
+}
+
+.player-board > .cell.hit {
+    background: rgb(185, 29, 60);
+    border: 2px solid rgb(150, 20, 46);
+}
+
+.ai-board > .cell {
+    cursor: pointer;
+}
+
+.ai-board > .cell:hover {
+    background: rgb(150, 150, 150);
+}
+
+.ai-board > .cell.hit {
+    background: rgb(45, 206, 94);
+    border: 2px solid rgb(28, 151, 65);
+}
+
+.ai-board > .cell.missed,
+.ai-board > .cell.hit {
+    cursor: default;
+    pointer-events: none;
 }
