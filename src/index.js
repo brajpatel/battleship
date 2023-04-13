@@ -12,6 +12,8 @@ playerNameInput.addEventListener('keyup', () => {
 
 playerReadyBtn.addEventListener('click', setPlayerName);
 
+const playAgainBtn = document.getElementById('play-again-btn');
+playAgainBtn.addEventListener('click', () => window.location.reload());
 
 const playerShips = document.getElementById('player-ships');
 const htmlCarrier = document.getElementById('carrier');
@@ -252,6 +254,11 @@ function updateBoard(board, boardName) {
 }
 
 function endGame(winner) {
+    const gameEndContainer = document.getElementById('game-end-container');
+    gameEndContainer.classList.remove('hide-winner');
+
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.textContent = `${winner.name} Wins!`;
 }
+
+endGame(player)
