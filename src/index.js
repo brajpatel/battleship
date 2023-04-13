@@ -6,12 +6,15 @@ import { Gameboard } from "./components/gameboard";
 const playerNameInput = document.getElementById('player-name-input');
 const playerReadyBtn = document.getElementById('player-ready-btn');
 
+// disable the game start button if the name input is false
 playerNameInput.addEventListener('keyup', () => {
     playerNameInput.value === '' ? playerReadyBtn.disabled = true : playerReadyBtn.disabled = false;
 })
 
+// set the player's name
 playerReadyBtn.addEventListener('click', setPlayerName);
 
+// restart the game
 const playAgainBtn = document.getElementById('play-again-btn');
 playAgainBtn.addEventListener('click', () => window.location.reload());
 
@@ -23,13 +26,13 @@ const htmlSubmarine = document.getElementById('submarine');
 const htmlDestroyer = document.getElementById('destroyer');
 const aiSide = document.getElementById('ai-side');
 
+// add drag functionality to player ships
 dragStarter(htmlCarrier);
 dragStarter(htmlBattleship);
 dragStarter(htmlCruiser);
 dragStarter(htmlSubmarine);
 dragStarter(htmlDestroyer);
 
-// add drag and drop functionality to the player's ships
 function dragStarter(ship) {
     ship.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', e.target.id);
@@ -70,6 +73,7 @@ createBoard('ai-board');
 updateBoard(playerBoard, 'player-board');
 updateBoard(aiBoard, 'ai-board');
 
+// set the player's name and display in the game
 function setPlayerName() {
     const name = playerNameInput.value.slice(0, 1).toUpperCase() + playerNameInput.value.slice(1);
     player.setName(name);
@@ -81,6 +85,7 @@ function setPlayerName() {
     modalContainer.style.display = 'none';
 }
 
+// add squares to the board to create a grid
 function createBoard(boardName) {
     const board = document.getElementById(`${boardName}`);
 
@@ -91,6 +96,7 @@ function createBoard(boardName) {
             cell.setAttribute('data-x', j);
             cell.setAttribute('data-y', i);
 
+            // make the ai's board squares attackable
             if(boardName === 'ai-board') {
                 cell.addEventListener('click', (e) => {
                     attackEnemy(e.target);
@@ -109,6 +115,7 @@ function createBoard(boardName) {
     }
 }
 
+// randomly place the ai's ships
 function placeAiShip(ship) {
     let indicator = true;
 
@@ -123,6 +130,7 @@ function placeAiShip(ship) {
     }
 }
 
+// drop the player's ship on to the grid at the desired coordinates
 function dropShip(e) {
     let shipData = e.dataTransfer.getData('text');
     let x = parseInt(e.target.getAttribute('data-x'));
@@ -199,6 +207,7 @@ function dropShip(e) {
     }
 }
 
+// adjust the layout of the game once all the player's ships are on their board
 function updateGameLayout() {
     const gameContainer = document.getElementById('game-container');
 
@@ -208,6 +217,7 @@ function updateGameLayout() {
     gameContainer.classList.add('game-layout');
 }
 
+// attack the other player
 function attackEnemy(target) {
     let x = target.getAttribute('data-x');
     let y = target.getAttribute('data-y');
@@ -227,6 +237,7 @@ function attackEnemy(target) {
     }
 }
 
+// show squares that have been attacked and hit a ship or missed
 function updateBoard(board, boardName) {
     let boardArr = board.getGameboard();
     let missedAttacksArr = board.getMissedAttacks();
@@ -235,12 +246,14 @@ function updateBoard(board, boardName) {
         row.forEach((cell, x) => {
             if(cell.shipName) {
                 if(cell.shipName.checkHit(cell.shipName.getShip()[cell.shipIndex])) {
+                    // show a square occupied by a ship and has been hit
                     let selectedCell = document.querySelector(`.${boardName} [data-x="${x}"][data-y="${y}"]`);
                     selectedCell.classList.add('hit');
                     selectedCell.classList.remove('occupied');
                     selectedCell.textContent = 'X';
                 }
                 else if(boardName === 'player-board') {
+                    // show a square occupied by a ship but has not been hit yet
                     let selectedCell = document.querySelector(`.${boardName} [data-x="${x}"][data-y="${y}"]`);
                     selectedCell.classList.add('occupied');
                 }
@@ -248,6 +261,7 @@ function updateBoard(board, boardName) {
         });
     });
 
+    // show missed attacks on the board
     missedAttacksArr.forEach((attack) => {
         let selectedCell = document.querySelector(`.${boardName} [data-x="${attack.x}"][data-y="${attack.y}"]`);
         selectedCell.classList.add('missed');
@@ -255,6 +269,7 @@ function updateBoard(board, boardName) {
     });
 }
 
+// show the end game container
 function endGame(winner) {
     const gameEndContainer = document.getElementById('game-end-container');
     gameEndContainer.classList.remove('hide-winner');
@@ -292,5 +307,3 @@ async function aiWin(winner) {
     playAgainBtn.classList.add('ai-win-restart');
     playAgainBtn.textContent = 'Try Again?';
 }
-
-endGame(player);
