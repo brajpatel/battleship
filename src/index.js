@@ -30,6 +30,7 @@ const aiBoard = new Gameboard();
 // create players
 const player = new Player('');
 
+
 // player ships
 const carrier = new Ship(5);
 const battleship = new Ship(4);
@@ -148,6 +149,9 @@ function dropShip(e) {
                 }
             }
             break;
+        
+        default:
+            return;
     }
 }
 
@@ -161,7 +165,10 @@ function updateGameLayout() {
 }
 
 function attackEnemy(target) {
+    let x = target.getAttribute('data-x');
+    let y = target.getAttribute('data-y');
 
+    player.attack()
 }
 
 function updateBoard(board, boardName) {
