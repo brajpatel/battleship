@@ -198,6 +198,10 @@ form input {
     padding-bottom: 1rem;
 }
 
+.winner-container h2 > span {
+    margin: 1rem;
+}
+
 .player-win {
     color: rgb(67, 201, 74);
     border-bottom: 3px solid rgb(67, 201, 74);

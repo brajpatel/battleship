@@ -41,7 +41,7 @@ const playerBoard = new Gameboard();
 const aiBoard = new Gameboard();
 
 // create players
-const player = new Player('');
+const player = new Player('Player');
 const aiPlayer = new Ai('AI-Chan', player, playerBoard);
 
 // player ships
@@ -265,7 +265,7 @@ function endGame(winner) {
 async function playerWin(winner) {
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.classList.add('player-win');
-    winnerMessage.textContent = `${winner.name} Wins!`;
+    winnerMessage.innerHTML = `<i class="fa-solid fa-trophy"></i><span>${winner.name} Wins!</span><i class="fa-solid fa-trophy"></i>`;
 
     const response = await fetch('https://nekos.best/api/v2/thumbsup', { mode: 'cors' });
     const data = await response.json();
@@ -280,7 +280,7 @@ async function playerWin(winner) {
 async function aiWin(winner) {
     const winnerMessage = document.getElementById('winner-message');
     winnerMessage.classList.add('ai-win');
-    winnerMessage.textContent = `${winner.name} Wins!`;
+    winnerMessage.innerHTML = `<i class="fa-solid fa-skull-crossbones"></i><span>${winner.name} Wins!</span><i class="fa-solid fa-skull-crossbones"></i>`;
     
     const response = await fetch('https://nekos.best/api/v2/cry', { mode: 'cors' });
     const data = await response.json();
