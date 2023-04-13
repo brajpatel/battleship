@@ -146,6 +146,10 @@ button {
     align-items: center;
 }
 
+.hide-winner {
+    display: none;
+}
+
 .winner-container {
     background: white;
     padding: 1.5rem 2rem;
