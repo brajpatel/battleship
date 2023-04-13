@@ -158,6 +158,15 @@ button {
     gap: 1rem;
 }
 
+.modal h1 {
+    border-bottom: 3px solid black;
+    padding-bottom: 1rem;
+}
+
+.modal h1 > span {
+    margin: 0 1rem;
+}
+
 .modal form {
     display: flex;
     flex-direction: column;
