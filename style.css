@@ -204,8 +204,8 @@ form input {
 }
 
 .player-win {
-    color: rgb(44, 177, 51);
-    border-bottom: 3px solid rgb(44, 177, 51);
+    color: rgb(67, 201, 74);
+    border-bottom: 3px solid rgb(67, 201, 74);
 }
 
 .ai-win {
@@ -219,9 +219,9 @@ form input {
 }
 
 .player-win-restart {
-    background: rgb(44, 177, 51);
+    background: rgb(67, 201, 74);
     color: #eaebea;
-    border: 2px solid rgb(44, 177, 51);
+    border: 2px solid rgb(67, 201, 74);
 }
 
 .ai-win-restart {
