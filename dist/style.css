@@ -210,6 +210,10 @@ form input {
 }
 
 .github-link a {
+    color: rgb(206, 102, 123);
+}
+
+.github-link a:hover {
     color: crimson;
 }
 
