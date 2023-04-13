@@ -29,7 +29,7 @@ const playerBoard = new Gameboard();
 const aiBoard = new Gameboard();
 
 // create players
-const player = new Player('');
+const player = new Player('Player');
 const aiPlayer = new Ai('AI-Chan', player, playerBoard);
 
 // player ships
@@ -233,5 +233,7 @@ function updateBoard(board, boardName) {
 }
 
 function endGame(winner) {
-    alert(`${winner.name} Wins!`);
+    const winnerMessage = document.getElementById('winner-message');
+
+    winnerMessage.textContent = `${winner.name} Wins!`;
 }

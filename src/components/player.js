@@ -1,6 +1,6 @@
 export class Player {
-    constructor() {
-        this.name = '';
+    constructor(name) {
+        this.name = name;
         this.turn = true;
     }
 
