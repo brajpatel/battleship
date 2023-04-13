@@ -8,6 +8,7 @@ const htmlBattleship = document.getElementById('battleship');
 const htmlCruiser = document.getElementById('cruiser');
 const htmlSubmarine = document.getElementById('submarine');
 const htmlDestroyer = document.getElementById('destroyer');
+const aiSide = document.getElementById('ai-side');
 
 dragStarter(htmlCarrier);
 dragStarter(htmlBattleship);
@@ -88,11 +89,73 @@ function dropShip(e) {
                 playerShips.removeChild(ship);
                 updateBoard(playerBoard, 'player-board');
 
-                if(playerShips.childNodes.length <= 6) {
-                    playerShips.style.display = 'none';
+                if(playerShips.childNodes.length <= 9) {
+                    updateGameLayout();
                 }
             }
+            break;
+
+        case 'battleship':
+            if(playerBoard.checkValidShipPlacement(battleship.getShipLength(), x, y)) {
+                playerBoard.placeShip(battleship, x, y);
+                let ship = document.querySelector(`#${shipData}`);
+                playerShips.removeChild(ship);
+                updateBoard(playerBoard, 'player-board');
+
+                if(playerShips.childNodes.length <= 9) {
+                    updateGameLayout();
+                }
+            }
+            break;
+
+        case 'cruiser':
+            if(playerBoard.checkValidShipPlacement(cruiser.getShipLength(), x, y)) {
+                playerBoard.placeShip(cruiser, x, y);
+                let ship = document.querySelector(`#${shipData}`);
+                playerShips.removeChild(ship);
+                updateBoard(playerBoard, 'player-board');
+
+                if(playerShips.childNodes.length <= 9) {
+                    updateGameLayout();
+                }
+            }
+            break;
+
+        case 'submarine':
+            if(playerBoard.checkValidShipPlacement(submarine.getShipLength(), x, y)) {
+                playerBoard.placeShip(submarine, x, y);
+                let ship = document.querySelector(`#${shipData}`);
+                playerShips.removeChild(ship);
+                updateBoard(playerBoard, 'player-board');
+
+                if(playerShips.childNodes.length <= 9) {
+                    updateGameLayout();
+                }
+            }
+            break;
+
+        case 'destroyer':
+            if(playerBoard.checkValidShipPlacement(destroyer.getShipLength(), x, y)) {
+                playerBoard.placeShip(destroyer, x, y);
+                let ship = document.querySelector(`#${shipData}`);
+                playerShips.removeChild(ship);
+                updateBoard(playerBoard, 'player-board');
+
+                if(playerShips.childNodes.length <= 9) {
+                    updateGameLayout();
+                }
+            }
+            break;
     }
+}
+
+function updateGameLayout() {
+    const gameContainer = document.getElementById('game-container');
+
+    playerShips.style.display = 'none';
+    aiSide.classList.remove('hide-ai-side');
+    gameContainer.classList.remove('intial-layout');
+    gameContainer.classList.add('game-layout');
 }
 
 function attackEnemy(target) {
