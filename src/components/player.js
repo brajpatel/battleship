@@ -8,6 +8,10 @@ export class Player {
         this.name = name;
     }
 
+    checkTurn() {
+        return this.turn;
+    }
+
     startTurn() {
         if(this.turn === false) this.turn = true;
     }
