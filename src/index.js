@@ -4,6 +4,14 @@ import { Ship } from "./components/ship";
 import { Gameboard } from "./components/gameboard";
 
 const playerNameInput = document.getElementById('player-name-input');
+const playerReadyBtn = document.getElementById('player-ready-btn');
+
+playerNameInput.addEventListener('keyup', () => {
+    playerNameInput.value === '' ? playerReadyBtn.disabled = true : playerReadyBtn.disabled = false;
+})
+
+playerReadyBtn.addEventListener('click', setPlayerName);
+
 
 const playerShips = document.getElementById('player-ships');
 const htmlCarrier = document.getElementById('carrier');
@@ -59,6 +67,15 @@ createBoard('player-board');
 createBoard('ai-board');
 updateBoard(playerBoard, 'player-board');
 updateBoard(aiBoard, 'ai-board');
+
+function setPlayerName() {
+    const playerBoardName = document.getElementById('player-board-name');
+    const name = playerNameInput.value.slice(0, 1).toUpperCase() + playerNameInput.value.slice(1);
+    playerBoardName.textContent = `${name}'s Board`;
+
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer.style.display = 'none';
+}
 
 function createBoard(boardName) {
     const board = document.getElementById(`${boardName}`);
