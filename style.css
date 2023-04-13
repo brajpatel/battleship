@@ -137,6 +137,12 @@ button {
     outline: none;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
+    border-radius: 5px;
+    opacity: 0.7;
+}
+
+button:hover {
+    opacity: 1;
 }
 
 .overlay {
@@ -194,11 +200,32 @@ form input {
     width: 100%;
     text-align: center;
     font-size: 2rem;
-    border-bottom: 3px solid black;
     padding-bottom: 1rem;
+}
+
+.player-win {
+    color: rgb(44, 177, 51);
+    border-bottom: 3px solid rgb(44, 177, 51);
+}
+
+.ai-win {
+    color: rgb(185, 29, 60);
+    border-bottom: 2px solid rgb(185, 29, 60);
 }
 
 .winner-container img {
     height: 35vh;
     border-radius: 5px;
+}
+
+.player-win-restart {
+    background: rgb(44, 177, 51);
+    color: #eaebea;
+    border: 2px solid rgb(44, 177, 51);
+}
+
+.ai-win-restart {
+    background: rgb(185, 29, 60);
+    color: #eaebea;
+    border: 2px solid rgb(185, 29, 60);
 }
