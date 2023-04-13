@@ -8,7 +8,7 @@
 
 body {
     height: 100vh;
-    background: #eaebea;
+    background: #121212;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +18,8 @@ body {
 .game-container {
     height: 95vh;
     width: 97vw;
-    background: white;
-    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    background: #191919;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
     border-radius: 10px;
 }
 
@@ -43,11 +43,18 @@ body {
 }
 
 .ship {
+    cursor: grab;
     position: relative;
+    transition: 0.3s ease;
+}
+
+.ship:hover {
+    transform: scale(1.04);
 }
 
 .ship::after {
     content: var(--name);
+    color: #eaebea;
     position: absolute;
     bottom: -1.8rem;
     left: 50%;
@@ -78,6 +85,7 @@ body {
 /* player and ai boards */
 .board-name {
     font-size: 2rem;
+    color: #eaebea;
 }
 
 .player-board,
@@ -187,6 +195,25 @@ form input {
     text-align: center;
 }
 
+.game-start-btn {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+    border: 1px solid #eaebea;
+}
+
+.game-start-btn:disabled {
+    box-shadow: none;
+}
+
+.github-link {
+    font-size: 1.2rem;
+}
+
+.github-link a {
+    color: crimson;
+}
+
+/* winner container */
 .hide-winner {
     display: none;
 }
@@ -215,15 +242,6 @@ form input {
 .winner-container img {
     height: 35vh;
     border-radius: 5px;
-}
-
-.game-start-btn {
-    border: 1px solid #eaebea;
-    transition: 0.3s ease;
-}
-
-.game-start-btn:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .restart-game-btn {
