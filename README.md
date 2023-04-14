@@ -9,5 +9,7 @@ The [Battleship](https://www.theodinproject.com/lessons/node-path-javascript-bat
 These are some of the challenges I face while making this project:
 - Becoming comfortable writing tests before refactoring my code (and repeating)
 - Allowing the ships to be dragged and placed on to the board
+- Getting the placed ships to occupy the appopriate number of squares
+- Checking whether an attacked square was occupied by a ship or not
 ## View Project
 You can view and play the Battleship game by clicking [here](https://brajpatel.github.io/battleship/).
