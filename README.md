@@ -13,7 +13,7 @@ These are some of the challenges I face while making this project:
 - Getting the placed ships to occupy the appopriate number of squares
 - Checking whether an attacked square was occupied by a ship or not
 - Updating the board to show an attack missed or hit a ship
-<br/>
+<br/><br/>
 If I started this project again, I would implement a way for the user to be able to place their ships horizontally or vertically as opposed to only vertically.
 ## View Project
 You can view and play the Battleship game by clicking [here](https://brajpatel.github.io/battleship/).
