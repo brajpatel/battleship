@@ -9,7 +9,7 @@ const playerReadyBtn = document.getElementById('player-ready-btn');
 // disable the game start button if the name input is false
 playerNameInput.addEventListener('keyup', () => {
     playerNameInput.value === '' ? playerReadyBtn.disabled = true : playerReadyBtn.disabled = false;
-})
+});
 
 // set the player's name
 playerReadyBtn.addEventListener('click', setPlayerName);
